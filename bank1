@@ -1,0 +1,58 @@
+import java.io.*;
+class I0000
+{
+    static BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+    public static void create()throws IOException
+    {
+        System.out.println("WELCOME TO T&A BANKERS");
+        int f=0;
+        String idNum;
+
+        FileReader fin=new FileReader("ID.txt");
+        BufferedReader in1=new BufferedReader(fin);
+
+        System.out.println("Please swipe your finger");
+        String id=in.readLine();
+        String preid=in1.readLine();//finding id
+        while(preid!=null)
+        {
+            if(id.equals(preid)==true)
+            {
+                f=1;
+                idNum=preid;
+                break;
+            }
+
+            preid=in1.readLine();
+        }
+        if(f==0)
+            System.out.println("Sorry,id not found");
+        else{
+            creator.main("0000",id);
+        }
+        in1.close();
+        System.out.println("press enter to continue");
+        String a=in.readLine();
+    }
+
+    public static void transact(String id)throws IOException
+    {
+        transaction.withdraw("0000",id);
+        System.out.println("Thank you for using T&A BANKERS");
+        System.out.println("press enter to continue");
+        String a=in.readLine();
+    }
+    
+     public static void balance(String id)throws IOException
+    {
+        transaction.balance("0000",id);
+        System.out.println("Thank you for using T&A BANKERS");
+        System.out.println("press enter to continue");
+        String a=in.readLine();
+    }
+    
+    public static void main(String args[])throws IOException
+    {
+        create();
+    }
+}
