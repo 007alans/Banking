@@ -1,0 +1,40 @@
+import java.io.*;
+class creator
+{
+    public static void main(String bank,String id)throws IOException
+    {
+        FileWriter fout=new FileWriter(id+".txt",true);
+        PrintWriter pout=new PrintWriter(fout);
+        BufferedWriter in3=new BufferedWriter(pout);
+
+        FileReader fin1=new FileReader(id+".txt");
+        BufferedReader in2=new BufferedReader(fin1);
+
+        String acc=in2.readLine();//multi acc
+        acc=in2.readLine();
+        acc=in2.readLine();
+        acc=in2.readLine();
+        acc=in2.readLine();
+        int f=0;
+        while(acc!=null){
+            if(acc.equals(bank)){    
+                f=2;break;}
+            acc=in2.readLine();
+        }
+        if(f==2)
+            System.out.println("Sorry , the Account alrady exist");
+        else
+        {   pout.println(bank);
+            FileWriter fout1=new FileWriter(bank+id+".txt");
+            PrintWriter pout1=new PrintWriter(fout1);
+            BufferedWriter in1=new BufferedWriter(pout1);
+            
+            pout1.println("80000");
+            in1.close();
+            System.out.println("Account created");
+            System.out.println("Your Balance is 80000");
+        }
+        in2.close();
+        in3.close();
+    }
+}
