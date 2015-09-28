@@ -1,2 +1,1 @@
-# Banking
-model of biometric banking
+# MODEL OF BIOMETRIC BANKING
