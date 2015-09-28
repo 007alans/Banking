@@ -1,0 +1,46 @@
+import java.io.*;
+class transaction
+{
+    static BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+    public static void withdraw(String bank,String id)throws IOException
+    {
+        System.out.println("Enter the amount to be withdrawn");
+        int amt=Integer.parseInt(in.readLine());
+
+        FileReader fin1=new FileReader(bank+id+".txt");
+        BufferedReader in2=new BufferedReader(fin1);
+
+        int balance=Integer.parseInt(in2.readLine());
+        balance-=amt;
+        if(balance<0)
+            System.out.println("No enough balance");
+        else
+        {
+            recipt(balance,bank+id);
+        }
+        
+    }
+
+    public static void recipt(int balance,String acc)throws IOException
+    {
+        FileWriter fout1=new FileWriter(acc+".txt");
+        PrintWriter pout1=new PrintWriter(fout1);
+        BufferedWriter in1=new BufferedWriter(pout1);
+
+        pout1.println(balance);
+        in1.close();
+        System.out.println("The balance is "+balance);
+    }
+    
+    public static void balance(String bank,String id)throws IOException
+    {
+        FileReader fin1=new FileReader(bank+id+".txt");
+        BufferedReader in2=new BufferedReader(fin1);
+
+        int balance=Integer.parseInt(in2.readLine());
+        System.out.println("The balance is "+balance);
+        
+    }
+    public static void main(String args[])throws IOException
+    {}
+}
